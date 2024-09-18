@@ -19,10 +19,9 @@ if __name__ == "__main__":
     val_dataload = DataLoader(dataset =val_set,batch_size = 4,shuffle = True )
     print(train_dataload.__len__())
 
-    ## Training code
+    ## Loading the Model architecture    
+
     
-
-
 
 
 

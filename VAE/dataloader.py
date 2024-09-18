@@ -13,7 +13,7 @@ class custom_dataset(Dataset):
         return 
     
     def __getitem__(self,index):
-        return self.df.iloc[index].values
+        return self.df.iloc[index].values 
 
     def __len__(self):
         return self.df.shape[0]
