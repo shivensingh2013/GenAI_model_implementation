@@ -21,14 +21,12 @@ class vae_arch(nn.Module):
                     nn.ReLU(),
                     nn.Linear(256,784),
                     nn.Sigmoid()
-                
-        )
+                 )
+
     def forward(self,inp_img):
-        ##transform the input image into feedable input
-        
         z = self.encoder_layer(inp_img)
         recon_img = self.decoder_layer(z)
-        return recon_img
+        return z,recon_img
 
 
 
@@ -37,12 +35,12 @@ if __name__ == "__main__" :
     dataset_obj = custom_dataset(folder)
     sample_dataloader = DataLoader(dataset_obj,batch_size =4)
     sample = next(iter(sample_dataloader))
-    label,image = sample[0,1],sample[0,1:]
+    label,image = sample[:,0],sample[:,1:]
     image = image.type(torch.uint8)
     print(image.shape,image.dtype)
-    # vae_obj = vae_arch()
-    # target_img = vae_obj.forward(image)
-    # print(target_img)
+    vae_obj = vae_arch()
+    z,target_img = vae_obj.forward(image)
+    print(target_img)
 
     
 
