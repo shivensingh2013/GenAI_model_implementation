@@ -41,6 +41,7 @@ if __name__ == "__main__":
             ## transformation on the image
             image = image/255
             optimizer.zero_grad()
+            z,recon = model.forward(image)
             loss = criterion(image.float() , recon.float())
             total_loss +=np.float(loss.item())
             loss.backward()
@@ -51,6 +52,17 @@ if __name__ == "__main__":
         print(
             "Epoch {}/{}: loss={:.4f}".format(epoch + 1, num_epoch, epoch_loss)
         )
+
+        ## Validation of results
+        gen_image = model.sample()
+        gen_image = torch.round(gen_image *255)
+        gen_image = gen_image.detach().numpy().astype(np.uint8)
+        gen_image = gen_image.reshape((28,28))
+        buf = Image.fromarray(gen_image)
+        buf.save("generated{}.png".format(epoch+1))
+
+
+
 
 
 
