@@ -7,7 +7,7 @@ import pandas as pd
 from PIL import Image
 import numpy as np
 from  dataloader import custom_dataset
-
+from model import vae_arch
 
 if __name__ == "__main__":
 
@@ -20,8 +20,16 @@ if __name__ == "__main__":
     print(train_dataload.__len__())
 
     ## Loading the Model architecture    
+    model = vae_arch()
 
-    
+    ## start the training process:
+    for train_label, train_image in next(train_dataload):
+        
+
+
+
+
+
 
 
 

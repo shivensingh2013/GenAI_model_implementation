@@ -40,9 +40,9 @@ if __name__ == "__main__" :
     label,image = sample[0,1],sample[0,1:]
     image = image.type(torch.uint8)
     print(image.shape,image.dtype)
-    vae_obj = vae_arch()
-    target_img = vae_obj.forward(image)
-    print(target_img)
+    # vae_obj = vae_arch()
+    # target_img = vae_obj.forward(image)
+    # print(target_img)
 
     
 
