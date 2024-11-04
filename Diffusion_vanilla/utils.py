@@ -4,7 +4,6 @@ import torch
 """
 
 
-
 class NormActConv(nn.Module):
     """
     Perform GroupNorm, Activation, and Convolution operations.
@@ -17,7 +16,7 @@ class NormActConv(nn.Module):
                              norm:bool= True,
                              act:bool = True):
         super(NormActConv,self).__init__()
-        self.g_norm == nn.GroupNorm(num_groups,in_channels) if norm is True else nn.Identity()
+        self.g_norm = nn.GroupNorm(num_groups,in_channels) if norm is True else nn.Identity()
         self.act = nn.SiLU() if act is True else nn.Identity()
         self.conv = nn.Conv2d(in_channels,out_channels,kernel_size,padding = (kernel_size - 1)//2 )
     
@@ -28,22 +27,17 @@ class NormActConv(nn.Module):
         return x
 
 class TimeEmbedding(nn.Module):
-     def __init__(self, 
+    def __init__(self, 
                  n_out:int, # Output Dimension
                  t_emb_dim:int = 128 # Time Embedding Dimension
                 ):
         super(TimeEmbedding, self).__init__()
         
         # Time Embedding Block
-        self.te_block = nn.Sequential(
-            nn.SiLU(), 
-            nn.Linear(t_emb_dim, n_out)
-        )
+        self.te_block = nn.Sequential(nn.SiLU(),  nn.Linear(t_emb_dim, n_out))
 
-        def forward(self, x):
-            return self.te_block(x)
-
-
+    def forward(self, x):
+        return self.te_block(x)
 
 class SelfAttentionBlock(nn.Module):
     """
@@ -74,8 +68,6 @@ class SelfAttentionBlock(nn.Module):
         ## _ - Attention map - Batch First - > N (number of sample) , L (target sequence) , S (source sequence length)
         x = x.transpose(1, 2).reshape(batch_size, channels, h, w)
         return x
-
-
 
 class Downsample(nn.Module):
     """
@@ -125,7 +117,6 @@ class Downsample(nn.Module):
             return self.cv(x)
             
         return torch.cat([self.cv(x), self.mpool(x)], dim=1)
-
 
 class Upsample(nn.Module):
     """
