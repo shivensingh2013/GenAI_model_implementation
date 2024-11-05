@@ -48,7 +48,7 @@ if __name__== "__main__" :
     tensor = transform(orig).unsqueeze(0).to(device)
     # print(tensor.shape)
     noise = torch.randn(tensor.shape).to(device)
-    t_steps = torch.randint(0, 10, (1,)) 
+    t_steps = torch.randint(0, 10, (1,))        
     noise_out_image = obj.add_noise(tensor,noise,t_steps)
     print(noise_out_image.shape)
     transformed_img = transforms.ToPILImage()(noise_out_image[0])
