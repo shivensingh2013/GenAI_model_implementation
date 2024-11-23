@@ -1,0 +1,39 @@
+Channels:
+ - defaults
+Platform: linux-64
+Collecting package metadata (repodata.json): ...working... done
+Solving environment: ...working... done
+
+## Package Plan ##
+
+  environment location: /home/ihg6kor/miniconda3/envs/genai
+
+  added / updated specs:
+    - readline
+
+
+The following packages will be downloaded:
+
+    package                    |            build
+    ---------------------------|-----------------
+    ld_impl_linux-64-2.40      |       h12ee557_0         710 KB
+    python-3.8.2               |       hcf32534_0        49.6 MB
+    ------------------------------------------------------------
+                                           Total:        50.3 MB
+
+The following NEW packages will be INSTALLED:
+
+  ld_impl_linux-64   pkgs/main/linux-64::ld_impl_linux-64-2.40-h12ee557_0 
+
+The following packages will be UPDATED:
+
+  python                                   3.8.0-h0371630_2 --> 3.8.2-hcf32534_0 
+  readline                                   7.0-h7b6447c_5 --> 8.2-h5eee18b_0 
+
+
+Proceed ([y]/n)? 
+
+Downloading and Extracting Packages: ...working... done
+Preparing transaction: ...working... done
+Verifying transaction: ...working... done
+Executing transaction: ...working... done

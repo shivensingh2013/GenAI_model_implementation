@@ -42,13 +42,13 @@ if __name__ == "__main__":
         xt = generate(cfg)
         xt = 255 * xt[0][0].numpy()
         generated_imgs.append(xt.astype(np.uint8).flatten())
-
+    
 # Save Generated Data CSV
     generated_df = pd.DataFrame(generated_imgs, columns=[f'pixel{i}' for i in range(784)])
     generated_df.to_csv(cfg.generated_csv_path, index=False)
 
 # Visualize
-    fig, axes = plt.subplots(4, 1, figsize=(8, 8))
+    fig, axes = plt.subplots(cfg.num_img_to_generate,1, figsize=(8, 8))
 
 # Plot each image in the corresponding subplot
     for i, ax in enumerate(axes.flat):

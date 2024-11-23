@@ -2,6 +2,7 @@ import torch
 import torch.nn as nn
 import utils
 from utils import NormActConv, TimeEmbedding,SelfAttentionBlock,Downsample,Upsample
+from typing import List
 
 """Unet architecture 
 Input : 1 ) Xt generated fro diffusion forward process (non trainable)
@@ -248,8 +249,8 @@ class Unet(nn.Module):
                  im_channels: int = 1, # RGB 
                  down_ch: list = [32, 64, 128, 256],
                  mid_ch: list = [256, 256, 128],
-                 up_ch: list[int] = [256, 128, 64, 16],
-                 down_sample: list[bool] = [True, True, False],
+                 up_ch: List[int] = [256, 128, 64, 16],
+                 down_sample: List[bool] = [True, True, False],
                  t_emb_dim: int = 128,
                  num_downc_layers:int = 2, 
                  num_midc_layers:int = 2, 
